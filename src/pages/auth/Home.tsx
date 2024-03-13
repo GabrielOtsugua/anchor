@@ -15,7 +15,7 @@ export function Home() {
   return (
     <main className="grid lg:grid-cols-2 h-screen">
       <div className="hidden lg:flex flex-col justify-between p-8 border-r bg-muted">
-        <div className="flex gap-3">
+        <div className="max-w-36 flex gap-3 hover:translate-x-4 duration-500 cursor-default">
           <Pizza />
           <h1 className="text-xl font-medium">pizza.shop</h1>
         </div>
@@ -28,7 +28,7 @@ export function Home() {
       </div>
 
       <div className="flex flex-col justify-center items-center">
-        <Card className="w-[95%] md:w-[70%] xl:w-[50%] lg:w-[70%] border-0 shadow-none">
+        <Card className="w-[95%] md:w-[70%] xl:w-[50%] lg:w-[70%] border-0 shadow-none animate-move_down">
           <CardHeader className="text-center">
             <CardTitle>Acessar dashboard</CardTitle>
             <CardDescription>
