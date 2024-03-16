@@ -14,7 +14,7 @@ export function NotFound() {
           <i>{error.statusText || error.message}</i>
         </p>
 
-        <Button onClick={() => navigate("/")}>
+        <Button onClick={() => navigate("/home")}>
           Voltar para a página inicial
         </Button>
       </main>

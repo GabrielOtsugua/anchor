@@ -71,18 +71,12 @@ module.exports = {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
-
-        move_down: {
-          from: { transform: "translateY(-2rem)", opacity: 0 },
-          to: { transform: "translateY(0rem)", opacity: 1 },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
 
         fade: "fade 1s ease-out",
-        move_down: "move_down 1s ease-out",
       },
     },
   },
