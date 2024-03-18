@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -6,55 +5,57 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { motion } from "framer-motion";
-import { ArrowRight, Dot, MoveRight, Search, X } from "lucide-react";
+import { Dot } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
+import { DataDialog } from "./components/DataDialog";
+import { CancellationDialog } from "./components/CancellationDialog";
+import { ApprovalDialog } from "./components/ApprovalDialog";
 
 export function Orders() {
   const orders = [
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Pendente",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
     },
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Entregue",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
     },
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Cancelado",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
     },
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Pendente",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
     },
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Entregue",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
     },
     {
       id: uuidv4(),
-      finishedAt: "há 15 minutos",
+      finishedAt: 15,
       status: "Cancelado",
       clientName: "Gabriel Augusto Moraes de Aguiar",
       total: 250.0,
@@ -80,7 +81,7 @@ export function Orders() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.2, delay: 0.3 }}
       >
-        <Table className="border shadow">
+        <Table className="">
           <TableCaption>Pedidos feitos recentemente.</TableCaption>
 
           <TableHeader>
@@ -89,7 +90,7 @@ export function Orders() {
               <TableHead>Identificador</TableHead>
               <TableHead className="min-w-32">Realizado há</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="min-w-72">Cliente</TableHead>
+              <TableHead className="min-w-48">Cliente</TableHead>
               <TableHead className="min-w-24">Total</TableHead>
               <TableHead></TableHead>
               <TableHead></TableHead>
@@ -100,38 +101,31 @@ export function Orders() {
             {orders.map((item) => (
               <TableRow key={item.id}>
                 <TableCell className="font-medium">
-                  <Button variant="outline" className="p-2 h-auto">
-                    <Search className="w-3 h-3" />
-                  </Button>
+                  <DataDialog order={item} />
                 </TableCell>
                 <TableCell className="font-medium">
                   {item.id.slice(0, 9)}
                 </TableCell>
-                <TableCell>{item.finishedAt}</TableCell>
+                <TableCell>{`há ${item.finishedAt} minutos`}</TableCell>
                 <TableCell className="flex items-center">
                   <Dot
                     data-status={item.status}
-                    className="h-8 w-8 text-muted-foreground text-yellow-500 data-[status='Entregue']:text-emerald-500 data-[status='Cancelado']:text-rose-500"
+                    className="h-8 w-8 text-muted-foreground text-yellow-500 data-[status='Entregue']:text-sky-500 data-[status='Cancelado']:text-rose-500"
                   />
                   {item.status}
                 </TableCell>
-                <TableCell>{item.clientName}</TableCell>
+                <TableCell>
+                  {`${item.clientName
+                    .split(" ")
+                    .filter((_, i) => i < 2)
+                    .join(" ")}...`}
+                </TableCell>
                 <TableCell>R$ {item.total},00</TableCell>
                 <TableCell>
-                  <Button
-                    variant="outline"
-                    className="text-xs py-1 px-2 h-auto flex"
-                  >
-                    <ArrowRight className="w-2 h-2 mr-2" /> Aprovar
-                  </Button>
+                  <ApprovalDialog order={item} />
                 </TableCell>
                 <TableCell>
-                  <Button
-                    variant="outline"
-                    className="text-xs py-1 px-2 h-auto flex"
-                  >
-                    <X className="w-2 h-2 mr-1" /> Cancelar
-                  </Button>
+                  <CancellationDialog order={item} />
                 </TableCell>
               </TableRow>
             ))}

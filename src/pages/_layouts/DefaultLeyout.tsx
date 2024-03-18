@@ -28,7 +28,7 @@ export function DefaultLeyout() {
 
   return (
     <div className="">
-      <header className="hidden lg:flex justify-between items-center py-2 px-4 xl:w-[90%] 2xl:w-[60%] m-auto">
+      <header className="hidden lg:flex justify-between items-center py-2 px-4 xl:w-[90%] 2xl:w-[70%] m-auto">
         <nav className="flex gap-4 items-center">
           <Pizza />
 
@@ -39,7 +39,7 @@ export function DefaultLeyout() {
             data-pathname={pathname === "/"}
             className="flex gap-1 items-center text-muted-foreground data-[pathname=true]:text-accent-foreground hover:text-accent-foreground"
           >
-            <Home className="w-4 h-4" /> Inicio
+            <Home className="w-4 h-4" /> Início
           </Link>
 
           <Link
@@ -60,17 +60,19 @@ export function DefaultLeyout() {
                 pizza.shop <ChevronDown className="w-4 h-4 ml-2" />
               </Button>
             </DropdownMenuTrigger>
+
             <DropdownMenuContent className="">
               <DropdownMenuLabel>pizza.shop</DropdownMenuLabel>
+              <DropdownMenuLabel className="flex justify-start items-center">
+                <User className="mr-2 h-4 w-4" />
+                <span>
+                  <p>Gabriel Augusto</p>
+                  <p className="text-xs">gabriel.augusto@pizzashop.com</p>
+                </span>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem className="flex justify-start cursor-pointer">
-                  <User className="mr-2 h-4 w-4" />
-                  <span>
-                    <p>Gabriel Augusto</p>
-                    <p className="text-xs">gabriel.augusto@pizzashop.com</p>
-                  </span>
-                </DropdownMenuItem>
+                <DropdownMenuItem></DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
                   <Store className="mr-2 h-4 w-4" />
                   <span>Perfil da loja</span>
@@ -92,7 +94,7 @@ export function DefaultLeyout() {
 
       <Separator className="border-b" />
 
-      <main className="py-8 px-4 xl:w-[90%] 2xl:w-[60%] m-auto">
+      <main className="py-8 px-4 xl:w-[90%] 2xl:w-[70%] m-auto">
         <Outlet />
       </main>
     </div>
