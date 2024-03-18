@@ -11,12 +11,14 @@ import { Dashboard } from "./pages/Dashboard/Dashboard.tsx";
 import { DefaultLeyout } from "./pages/_layouts/DefaultLeyout.tsx";
 import { Orders } from "./pages/Orders/Orders.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
+import { Store } from "./pages/Store/Store.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
   },
+
   {
     path: "/",
     element: <DefaultLeyout />,
@@ -31,6 +33,11 @@ const router = createBrowserRouter([
         element: <Orders />,
       },
     ],
+  },
+
+  {
+    path: "/store",
+    element: <Store />,
   },
 ]);
 

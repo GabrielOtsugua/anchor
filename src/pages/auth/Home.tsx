@@ -4,14 +4,21 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { Pizza } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import backgroundPizza from "../../assets/backgrounPizza.jpg";
 
 export function Home() {
   const navigate = useNavigate();
 
   return (
     <main className="grid lg:grid-cols-2 h-screen">
-      <div className="hidden lg:flex flex-col justify-between p-8 border-r bg-muted">
-        <div className="max-w-36 flex gap-3 hover:translate-x-4 duration-500 cursor-default">
+      <div className="hidden lg:flex flex-col justify-between border-r p-8">
+        <img
+          src={backgroundPizza}
+          alt=""
+          className="-z-10 absolute top-0 left-0 w-[50%] h-screen"
+        />
+
+        <div className="max-w-44 flex gap-3 hover:translate-x-4 duration-500 cursor-default bg-muted px-4 py-2 rounded-3xl">
           <Pizza />
           <h1 className="text-xl font-medium">pizza.shop</h1>
         </div>

@@ -73,9 +73,12 @@ export function DefaultLeyout() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem></DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem
+                  onClick={() => navigate("store")}
+                  className="cursor-pointer"
+                >
                   <Store className="mr-2 h-4 w-4" />
-                  <span>Perfil da loja</span>
+                  <span>Hero da loja</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => navigate("/home")}
