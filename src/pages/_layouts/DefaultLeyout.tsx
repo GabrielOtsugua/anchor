@@ -10,33 +10,36 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { userContext } from "@/contexts/UserContext";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import {
+  Anchor,
   ChevronDown,
   Home,
   LogOut,
-  Pizza,
   Store,
   User,
   UtensilsCrossed,
 } from "lucide-react";
+import { useContext } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export function DefaultLeyout() {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const { userFormData, logOut } = useContext(userContext);
 
   return (
     <div className="">
       <header className="hidden lg:flex justify-between items-center py-2 px-4 xl:w-[90%] 2xl:w-[70%] m-auto">
         <nav className="flex gap-4 items-center">
-          <Pizza />
+          <Anchor className="text-primary" />
 
           <span className="border-r h-5" />
 
           <Link
-            to="/"
-            data-pathname={pathname === "/"}
+            to="/dashboard"
+            data-pathname={pathname === "/dashboard"}
             className="flex gap-1 items-center text-muted-foreground data-[pathname=true]:text-accent-foreground hover:text-accent-foreground"
           >
             <Home className="w-4 h-4" /> Início
@@ -64,10 +67,16 @@ export function DefaultLeyout() {
             <DropdownMenuContent className="">
               <DropdownMenuLabel>pizza.shop</DropdownMenuLabel>
               <DropdownMenuLabel className="flex justify-start items-center">
-                <User className="mr-2 h-4 w-4" />
+                <User className="mr-2 h-4 w-4 text-primary" />
                 <span>
-                  <p>Gabriel Augusto</p>
-                  <p className="text-xs">gabriel.augusto@pizzashop.com</p>
+                  <p>
+                    {userFormData?.userName[0]
+                      .toUpperCase()
+                      .concat(userFormData?.userName.slice(1))}
+                  </p>
+                  <p className="text-xs">
+                    {userFormData?.userName.toLowerCase()}@pizzashop.com
+                  </p>
                 </span>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -77,14 +86,14 @@ export function DefaultLeyout() {
                   onClick={() => navigate("store")}
                   className="cursor-pointer"
                 >
-                  <Store className="mr-2 h-4 w-4" />
+                  <Store className="mr-2 h-4 w-4 text-primary" />
                   <span>Hero da loja</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  onClick={() => navigate("/home")}
+                  onClick={() => logOut(navigate)}
                   className="cursor-pointer"
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
+                  <LogOut className="mr-2 h-4 w-4 text-primary" />
                   <span>Sair</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>

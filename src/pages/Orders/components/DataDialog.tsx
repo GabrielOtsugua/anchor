@@ -9,15 +9,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Order } from "@/interfaces";
 import { Search } from "lucide-react";
-
-interface Order {
-  id: string;
-  finishedAt: number;
-  status: string;
-  clientName: string;
-  total: number;
-}
 
 interface DataDialogProps {
   order: Order;
@@ -27,8 +20,8 @@ export function DataDialog({ order }: DataDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
-          <Search className="w-3 h-3" />
+        <Button variant="outline" className="p-2 h-auto">
+          <Search className="w-3 h-3 text-primary" />
         </Button>
       </DialogTrigger>
 

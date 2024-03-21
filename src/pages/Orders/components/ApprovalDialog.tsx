@@ -10,22 +10,18 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { userContext } from "@/contexts/UserContext";
+import { Order } from "@/interfaces";
 import { ArrowRight } from "lucide-react";
-import { toast } from "@/components/ui/use-toast";
-
-interface Order {
-  id: string;
-  finishedAt: number;
-  status: string;
-  clientName: string;
-  total: number;
-}
+import { useContext } from "react";
 
 interface ApprovalDialogProps {
   order: Order;
 }
 
 export function ApprovalDialog({ order }: ApprovalDialogProps) {
+  const { orderStatusChange } = useContext(userContext);
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -47,11 +43,7 @@ export function ApprovalDialog({ order }: ApprovalDialogProps) {
         <AlertDialogFooter>
           <AlertDialogCancel>Sair</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => {
-              toast({
-                description: `Status do pedido alterado para "Entregue"`,
-              });
-            }}
+            onClick={() => orderStatusChange(order.id, "Entregue")}
           >
             Prosseguir
           </AlertDialogAction>

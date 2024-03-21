@@ -1,9 +1,7 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import "./index.css";
 import { ThemeProvider } from "./themes/theme-provider.tsx";
 import { Home } from "./pages/auth/Home.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
@@ -12,11 +10,13 @@ import { DefaultLeyout } from "./pages/_layouts/DefaultLeyout.tsx";
 import { Orders } from "./pages/Orders/Orders.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import { Store } from "./pages/Store/Store.tsx";
+import { UserContextProvider } from "./contexts/UserContext.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <Home />,
+    errorElement: <NotFound />,
   },
 
   {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "/",
+        path: "/dashboard",
         element: <Dashboard />,
       },
       {
@@ -43,9 +43,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-      <Toaster />
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <UserContextProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </UserContextProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

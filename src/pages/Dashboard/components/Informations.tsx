@@ -12,13 +12,12 @@ export function Informations() {
       <div className="border rounded-xl p-6 flex flex-col gap-2 shadow">
         <header className="flex items-center justify-between">
           <p className="font-semibold ">Receita total</p>
-          <Wallet className="w-4 h-4 text-muted-foreground" />
+          <Wallet className="w-4 h-4 text-primary" />
         </header>
         <main>
           <h1 className="text-2xl font-bold">R$ 1.200.000,00</h1>
           <p className="text-muted-foreground text-xs">
-            <span className="text-emerald-500">+10%</span> em relação ao mês
-            passado
+            <span>+30%</span> em relação ao ano passado
           </p>
         </main>
       </div>
@@ -26,13 +25,12 @@ export function Informations() {
       <div className="border rounded-xl p-6 flex flex-col gap-2 shadow">
         <header className="flex items-center justify-between">
           <p className="font-semibold ">Pedidos (mês)</p>
-          <Utensils className="w-4 h-4 text-muted-foreground" />
+          <Utensils className="w-4 h-4 text-primary" />
         </header>
         <main>
           <h1 className="text-2xl font-bold">600</h1>
           <p className="text-muted-foreground text-xs">
-            <span className="text-emerald-500">+4%</span> em relação ao mês
-            passado
+            <span>+4%</span> em relação ao mês passado
           </p>
         </main>
       </div>
@@ -40,13 +38,12 @@ export function Informations() {
       <div className="border rounded-xl p-6 flex flex-col gap-2 shadow">
         <header className="flex items-center justify-between">
           <p className="font-semibold ">Faturamento (mês)</p>
-          <NotepadText className="w-4 h-4 text-muted-foreground" />
+          <NotepadText className="w-4 h-4 text-primary" />
         </header>
         <main>
           <h1 className="text-2xl font-bold">60.000,00</h1>
           <p className="text-muted-foreground text-xs">
-            <span className="text-emerald-500">+6%</span> em relação ao mês
-            passado
+            <span>+6%</span> em relação ao mês passado
           </p>
         </main>
       </div>
@@ -54,13 +51,12 @@ export function Informations() {
       <div className="border rounded-xl p-6 flex flex-col gap-2 shadow">
         <header className="flex items-center justify-between">
           <p className="font-semibold ">Lucro/Prejuízo (mês)</p>
-          <DollarSign className="w-4 h-4 text-muted-foreground" />
+          <DollarSign className="w-4 h-4 text-primary" />
         </header>
         <main>
           <h1 className="text-2xl font-bold">R$ 40.000,00</h1>
           <p className="text-muted-foreground text-xs">
-            <span className="text-emerald-500">+6%</span> em relação ao mês
-            passado
+            <span>+6%</span> em relação ao mês passado
           </p>
         </main>
       </div>

@@ -24,7 +24,7 @@ export function Store() {
 
           <Button
             variant={"secondary"}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
             className="w-52"
           >
             Voltar para o Dashboard
