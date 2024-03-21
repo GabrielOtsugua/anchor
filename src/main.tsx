@@ -11,6 +11,7 @@ import { Orders } from "./pages/Orders/Orders.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import { Store } from "./pages/Store/Store.tsx";
 import { UserContextProvider } from "./contexts/UserContext.tsx";
+import { Profile } from "./pages/Profile/Profile.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/orders",
         element: <Orders />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

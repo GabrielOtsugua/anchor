@@ -7,7 +7,7 @@ export function Store() {
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <div className="w-[70%] grid grid-cols-2 p-16 bg-background rounded-3xl">
+      <div className="w-[70%] grid grid-cols-2 p-16 bg-background rounded-3xl animate-fade">
         <div className="flex flex-col justify-center pr-8">
           <h1 className="text-4xl font-bold mb-4">Pizza Shop</h1>
           <p className="text-muted-foreground mb-4">

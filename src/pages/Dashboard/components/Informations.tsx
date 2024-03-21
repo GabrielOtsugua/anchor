@@ -41,7 +41,7 @@ export function Informations() {
           <NotepadText className="w-4 h-4 text-primary" />
         </header>
         <main>
-          <h1 className="text-2xl font-bold">60.000,00</h1>
+          <h1 className="text-2xl font-bold">R$ 60.000,00</h1>
           <p className="text-muted-foreground text-xs">
             <span>+6%</span> em relação ao mês passado
           </p>

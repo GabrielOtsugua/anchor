@@ -10,6 +10,7 @@ interface UserContextProps {
   onSubmitHome: (data: User, navigate: any) => void;
   logOut: (navigate: any) => void;
   orderStatusChange: (orderId: string, newStatus: string) => void;
+  changeProfileName: (newUserName: string, navigate: any) => void;
 }
 
 export const userContext = createContext({} as UserContextProps);
@@ -47,6 +48,17 @@ export function UserContextProvider({ children }: ChildrenType) {
     });
   };
 
+  const changeProfileName = (newName: string, navigate: any) => {
+    const newData = {
+      userName: newName,
+    };
+
+    localStorage.setItem("userName", newData.userName);
+    setUserFormData(newData);
+
+    navigate("/dashboard");
+  };
+
   useEffect(() => {
     const userName = localStorage.getItem("userName");
     userName && setUserFormData({ userName });
@@ -61,6 +73,7 @@ export function UserContextProvider({ children }: ChildrenType) {
         onSubmitHome,
         logOut,
         orderStatusChange,
+        changeProfileName,
       }}
     >
       {children}

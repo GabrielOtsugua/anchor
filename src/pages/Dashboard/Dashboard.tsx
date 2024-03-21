@@ -1,97 +1,51 @@
-import { Button } from "@/components/ui/button";
 import { DateRangePicker } from "./components/DateRangePicker";
 import { Grafics } from "./components/Grafics";
 import { Informations } from "./components/Informations";
+import { useEffect } from "react";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { motion } from "framer-motion";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { NavigationBar } from "./components/NavigationBar";
 
 export function Dashboard() {
+  const initialDialog = localStorage.getItem("initialDialog");
+
+  useEffect(() => {
+    localStorage.setItem("initialDialog", "closed");
+  }, []);
+
   return (
     <div className="flex flex-col gap-4">
+      <Dialog defaultOpen={initialDialog ? false : true}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="mb-4">Atenção usuário</DialogTitle>
+            <DialogDescription>
+              <p className="mb-4">
+                "pizza.shop" é o comércio padrão, com suas devidas informações,
+                para apresentação da plataforma.
+              </p>
+              <p>
+                O tema padrão da plataforma está como "Sistema", caso tenha
+                interesse em alterar o tema, clique no ícone no canto superior
+                direito.
+              </p>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
       <header>
         <div className="flex justify-between mb-4">
           <h1 className="text-3xl font-bold animate-fade">Dashboard</h1>
           <DateRangePicker className="animate-fade" />
         </div>
 
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="inline-flex gap-2 bg-secondary p-1 rounded"
-        >
-          <Button variant={"default"} className="px-3 py-1 h-auto">
-            Visão geral
-          </Button>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={"ghost"}
-                  type="reset"
-                  className="px-3 py-1 h-auto cursor-default text-muted-foreground"
-                >
-                  Análise
-                </Button>
-              </TooltipTrigger>
-
-              <TooltipContent>
-                <p>
-                  Somente para usuários{" "}
-                  <span className="text-primary">Premium</span>
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={"ghost"}
-                  type="reset"
-                  className="px-3 py-1 h-auto cursor-default text-muted-foreground"
-                >
-                  Relatórios
-                </Button>
-              </TooltipTrigger>
-
-              <TooltipContent>
-                <p>
-                  Somente para usuários{" "}
-                  <span className="text-primary">Premium</span>
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={"ghost"}
-                  type="reset"
-                  className="px-3 py-1 h-auto cursor-default text-muted-foreground"
-                >
-                  Notificações
-                </Button>
-              </TooltipTrigger>
-
-              <TooltipContent>
-                <p>
-                  Somente para usuários{" "}
-                  <span className="text-primary">Premium</span>
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </motion.div>
+        <NavigationBar />
       </header>
 
       <Informations />

@@ -64,24 +64,28 @@ export function DefaultLeyout() {
               </Button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="">
+            <DropdownMenuContent>
               <DropdownMenuLabel>pizza.shop</DropdownMenuLabel>
-              <DropdownMenuLabel className="flex justify-start items-center">
-                <User className="mr-2 h-4 w-4 text-primary" />
-                <span>
-                  <p>
-                    {userFormData?.userName[0]
-                      .toUpperCase()
-                      .concat(userFormData?.userName.slice(1))}
-                  </p>
-                  <p className="text-xs">
-                    {userFormData?.userName.toLowerCase()}@pizzashop.com
-                  </p>
-                </span>
-              </DropdownMenuLabel>
               <DropdownMenuSeparator />
+
               <DropdownMenuGroup>
-                <DropdownMenuItem></DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => navigate("/profile")}
+                  className="cursor-pointer"
+                >
+                  <User className="mr-2 h-4 w-4 text-primary" />
+                  <span>
+                    <p>
+                      {userFormData?.userName[0]
+                        .toUpperCase()
+                        .concat(userFormData?.userName.slice(1))}
+                    </p>
+                    <p className="text-xs">
+                      {userFormData?.userName.toLowerCase()}@pizzashop.com
+                    </p>
+                  </span>
+                </DropdownMenuItem>
+
                 <DropdownMenuItem
                   onClick={() => navigate("store")}
                   className="cursor-pointer"
@@ -89,6 +93,7 @@ export function DefaultLeyout() {
                   <Store className="mr-2 h-4 w-4 text-primary" />
                   <span>Hero da loja</span>
                 </DropdownMenuItem>
+
                 <DropdownMenuItem
                   onClick={() => logOut(navigate)}
                   className="cursor-pointer"
