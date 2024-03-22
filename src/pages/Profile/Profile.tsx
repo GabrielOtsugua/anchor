@@ -28,17 +28,18 @@ export function Profile() {
   const { changeProfileName } = useContext(userContext);
 
   return (
-    <div className="flex justify-center items-center mt-48">
+    <div className="flex justify-center items-center mt-8">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.2 }}
       >
-        <Tabs defaultValue="profile" className="w-[400px]">
+        <Tabs defaultValue="profile" className="min-w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="profile">Perfil</TabsTrigger>
             <TabsTrigger value="business">Comércio</TabsTrigger>
           </TabsList>
+
           <TabsContent value="profile">
             <Card>
               <CardHeader>
@@ -71,7 +72,8 @@ export function Profile() {
                   disabled={
                     watch().newName
                       ? watch().newName.length < 3 ||
-                        watch().newName === userFormData?.userName
+                        watch().newName.toLocaleLowerCase() ===
+                          userFormData?.userName.toLocaleLowerCase()
                       : true
                   }
                   onClick={handleSubmit((data) =>
@@ -89,23 +91,10 @@ export function Profile() {
               <CardHeader>
                 <CardTitle>Comércio</CardTitle>
                 <CardDescription>
-                  Disponível apenas aos usuários{" "}
+                  Esta opção está disponível apenas aos usuários{" "}
                   <span className="text-primary">Premium</span>.
                 </CardDescription>
               </CardHeader>
-              {/* <CardContent className="space-y-2">
-              <div className="space-y-1">
-                <Label htmlFor="current">Current password</Label>
-                <Input id="current" type="password" />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="new">New password</Label>
-                <Input id="new" type="password" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save password</Button>
-            </CardFooter> */}
             </Card>
           </TabsContent>
         </Tabs>

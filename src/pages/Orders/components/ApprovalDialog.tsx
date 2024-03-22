@@ -33,7 +33,7 @@ export function ApprovalDialog({ order }: ApprovalDialogProps) {
           <ArrowRight className="w-2 h-2 mr-1" /> Aprovar
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="w-[91.5%]">
         <AlertDialogHeader>
           <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
           <AlertDialogDescription>

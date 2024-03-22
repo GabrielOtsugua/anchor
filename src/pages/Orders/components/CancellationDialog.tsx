@@ -33,13 +33,15 @@ export function CancellationDialog({ order }: CancellationlDialogProps) {
           <X className="w-2 h-2 mr-1" /> Cancelar
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+
+      <AlertDialogContent className="w-[91.5%]">
         <AlertDialogHeader>
           <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
           <AlertDialogDescription>
             Esta ação tornará o status do pedido como "Cancelado".
           </AlertDialogDescription>
         </AlertDialogHeader>
+
         <AlertDialogFooter>
           <AlertDialogCancel>Sair</AlertDialogCancel>
           <AlertDialogAction

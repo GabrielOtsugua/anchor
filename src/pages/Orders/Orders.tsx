@@ -40,7 +40,7 @@ export function Orders() {
         transition={{ duration: 0.2, delay: 0.2 }}
         className="w-64"
       >
-        <Label>Filtros</Label>
+        <Label>Filtro</Label>
         <Input
           {...register("clientName")}
           placeholder="Nome do cliente"

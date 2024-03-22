@@ -1,4 +1,4 @@
-import { MobileHeader } from "@/components/MobileHeader";
+import { MobileHeader } from "@/pages/_layouts/MobileHeader";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

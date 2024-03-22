@@ -25,9 +25,9 @@ export function DataDialog({ order }: DataDialogProps) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="w-[91.5%]">
         <DialogHeader>
-          <DialogTitle>Dados</DialogTitle>
+          <DialogTitle>Pedido</DialogTitle>
 
           <DialogDescription>
             Veja as informações do pedido aqui.

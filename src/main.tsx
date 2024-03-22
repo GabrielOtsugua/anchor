@@ -1,7 +1,11 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { ThemeProvider } from "./themes/theme-provider.tsx";
 import { Home } from "./pages/auth/Home.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
@@ -12,6 +16,16 @@ import { Toaster } from "./components/ui/toaster.tsx";
 import { Store } from "./pages/Store/Store.tsx";
 import { UserContextProvider } from "./contexts/UserContext.tsx";
 import { Profile } from "./pages/Profile/Profile.tsx";
+
+interface PrivateRouteProps {
+  element: React.ReactElement;
+}
+
+function PrivateRoute({ element }: PrivateRouteProps) {
+  const auth = localStorage.getItem("userName");
+
+  return auth ? element : <Navigate to="/" />;
+}
 
 const router = createBrowserRouter([
   {
@@ -27,22 +41,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute element={<Dashboard />} />,
       },
       {
         path: "/orders",
-        element: <Orders />,
+        element: <PrivateRoute element={<Orders />} />,
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <PrivateRoute element={<Profile />} />,
       },
     ],
   },
 
   {
     path: "/store",
-    element: <Store />,
+    element: <PrivateRoute element={<Store />} />,
+    errorElement: <NotFound />,
   },
 ]);
 

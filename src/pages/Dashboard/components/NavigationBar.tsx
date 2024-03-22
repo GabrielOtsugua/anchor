@@ -13,7 +13,7 @@ export function NavigationBar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.2 }}
-      className="inline-flex gap-2 bg-secondary p-1 rounded"
+      className="w-auto hidden lg:inline-flex gap-2 bg-secondary p-1 rounded"
     >
       <Button variant={"default"} className="px-3 py-1 h-auto">
         Visão geral

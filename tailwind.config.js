@@ -73,10 +73,7 @@ module.exports = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-
-        fade: "fade 1s ease-out",
+        fade: "fade 0.5s ease-out",
       },
     },
   },
