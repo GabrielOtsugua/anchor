@@ -27,7 +27,7 @@ export function Orders() {
   const clientName = watch().clientName || "";
 
   const filteredOrders = orders.filter((item) =>
-    item.clientName.toLowerCase().startsWith(clientName)
+    item.clientName.toLowerCase().startsWith(clientName.toLowerCase())
   );
 
   return (
