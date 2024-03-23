@@ -41,7 +41,14 @@ export function Home() {
       </div>
 
       <div className="flex flex-col justify-center items-center">
-        <p className="absolute top-8 right-8 font-semibold">Home</p>
+        <div className="absolute top-4 left-4 flex lg:hidden gap-2 items-center">
+          <Anchor className="text-primary" />
+          <p className="text-lg">Anchor</p>
+        </div>
+
+        <p className="absolute top-4 right-4 lg:top-8 lg:right-8 font-semibold">
+          Home
+        </p>
 
         <motion.div
           initial={{ y: -20, opacity: 0 }}
@@ -72,6 +79,22 @@ export function Home() {
               Acessar
             </Button>
           </form>
+
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.7 }}
+            className="absolute lg:hidden bottom-6 left-4"
+          >
+            <em>
+              Com o Anchor, navegue pelas águas do sucesso gastronômico com
+              tranquilidade e precisão.
+            </em>
+
+            <p className="text-xs text-muted-foreground font-light mt-2">
+              Home &copy; Anchor - 2024
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </main>

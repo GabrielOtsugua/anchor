@@ -21,6 +21,7 @@ import {
 import { useContext } from "react";
 import { userContext } from "@/contexts/UserContext";
 import { Separator } from "../../components/ui/separator";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function MobileHeader() {
   const navigate = useNavigate();
@@ -80,13 +81,30 @@ export function MobileHeader() {
           <SheetContent className="rounded-s-lg">
             <SheetHeader className="mb-4">
               <SheetTitle className="text-start">Perfil</SheetTitle>
-              <SheetDescription className="text-start font-light">
-                {userFormData?.userName[0]
-                  .toUpperCase()
-                  .concat(userFormData?.userName.slice(1))}
+              <SheetDescription className="text-start text-foreground">
+                pizza.shop
               </SheetDescription>
-              <SheetDescription className="text-start font-light">
-                {userFormData?.userName.toLowerCase()}@pizzashop.com
+              <SheetDescription className="flex pt-2">
+                <Avatar className="mr-2">
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>
+                    {userFormData?.userName.slice(0, 2)}
+                  </AvatarFallback>
+                </Avatar>
+
+                <span>
+                  <p className="font-light text-start">
+                    {userFormData?.userName[0]
+                      .toUpperCase()
+                      .concat(userFormData?.userName.slice(1))}
+                  </p>
+                  <p className="text-xs mb-3 font-light">
+                    {userFormData?.userName.toLowerCase()}@pizzashop.com
+                  </p>
+                </span>
               </SheetDescription>
             </SheetHeader>
 

@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { useContext } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function DefaultLeyout() {
   const navigate = useNavigate();
@@ -64,8 +65,30 @@ export function DefaultLeyout() {
               </Button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent>
+            <DropdownMenuContent align="end">
               <DropdownMenuLabel>pizza.shop</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+
+              <div className="flex items-center px-2">
+                <Avatar className="mr-2">
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+
+                <span>
+                  <p className="font-light">
+                    {userFormData?.userName[0]
+                      .toUpperCase()
+                      .concat(userFormData?.userName.slice(1))}
+                  </p>
+                  <p className="text-xs mb-3 font-light">
+                    {userFormData?.userName.toLowerCase()}@pizzashop.com
+                  </p>
+                </span>
+              </div>
               <DropdownMenuSeparator />
 
               <DropdownMenuGroup>
@@ -74,16 +97,7 @@ export function DefaultLeyout() {
                   className="cursor-pointer"
                 >
                   <User className="mr-2 h-4 w-4 text-primary" />
-                  <span>
-                    <p>
-                      {userFormData?.userName[0]
-                        .toUpperCase()
-                        .concat(userFormData?.userName.slice(1))}
-                    </p>
-                    <p className="text-xs">
-                      {userFormData?.userName.toLowerCase()}@pizzashop.com
-                    </p>
-                  </span>
+                  <p>Perfil</p>
                 </DropdownMenuItem>
 
                 <DropdownMenuItem
